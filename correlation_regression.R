@@ -68,3 +68,28 @@ regression_summary_nigeria
 
 
 
+
+
+# 
+# 
+# 
+# # Create a function to extract correlation coefficients from the results
+# extract_correlation_coefficients <- function(correlation_matrix) {
+#   coefficients <- as.data.frame(as.table(correlation_matrix))
+#   colnames(coefficients) <- c("Variable_1", "Variable_2", "Correlation_Coefficient")
+#   return(coefficients)
+# }
+# 
+# # Create a data frame for each zone and Nigeria
+# correlation_dataframes <- lapply(names(correlation_results), function(zone) {
+#   correlation_matrix <- correlation_results[[zone]]
+#   data.frame(Ecological_Zone = zone, extract_correlation_coefficients(correlation_matrix))
+# })
+# 
+# # Combine the data frames into a single data frame
+# all_correlation_data <- do.call(rbind, correlation_dataframes)
+# 
+# # Save the combined correlation data as a CSV file
+# write.csv(all_correlation_data, file = "result/tables/correlation_results.csv", row.names = FALSE)
+# 
+# 
