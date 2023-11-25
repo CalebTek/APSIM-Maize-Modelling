@@ -112,7 +112,43 @@ ggplot(maize_data, aes(x = Year, y = `Maize Yield (kg/ha)`)) +
   theme_minimal()
 
 # Save the plot to a file (optional)
-ggsave(filename = paste0("figures/maize/","maize_yield_time_series.jpg"), width = 10, height = 6, units = "in")
+ggsave(filename = paste0("figures/timeseries/","maize_yield_time_series.jpg"), width = 10, height = 6, units = "in")
+
+
+
+## non ggplot for maize
+
+# Save the plot
+filename <- "figures/timeseries/maize_yield_time_series.png"
+png(
+  filename,
+  width     = 8,
+  height    = 6,
+  units     = "in",
+  res       = 300
+)
+# Create the first plot
+{
+  plot(maize_data$`Maize Yield (kg/ha)`, pch = 16, 
+       xlab = "", ylab = "", type = "b", col = "darkgreen", 
+       main = "Maize Yield Time Series for Nigeria (1990-2020)", axes = F)
+  
+  # Draw the left y-axis
+  axis(2, pretty(range(maize_data$`Maize Yield (kg/ha)`)), col = "black",
+       las = 3)
+  mtext("Maize Yield", side = 2, line = 2.5)
+  
+  # Draw the time axis
+  axis(1, at = 1:length(maize_data$Year), labels = maize_data$Year, col = "black", tick = TRUE)
+  
+  mtext("Year", side = 1, col = "black", line = 2.5)
+  
+  # Add a box around the first plot
+  box()
+  
+}
+
+dev.off()
 
 
 
